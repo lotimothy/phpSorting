@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bubble Sort</title>
+</head>
+<script type="text/javascript">
+	
+	function orderTwoThings(x, y) {
+		if (y<x) {
+			var temp = y;
+			y = x;
+			x = temp;
+		}
+		return [x, y];
+	}
+
+	var testArray = []
+	for (var ran=0; ran<100; ran++) {
+		testArray[ran] = Math.floor(Math.random()*100);
+	}
+
+	function bubbleSort(arr) {
+		for (var endPoint = arr.length-1; endPoint > 0; endPoint--) {
+			for (var i=0; i<endPoint; i++) {
+				var twoResults = orderTwoThings(arr[i], arr[i+1]);
+				arr[i] = twoResults[0];
+				arr[i+1] = twoResults[1];
+				// console.log(twoResults);
+				// console.log(arr);
+			}
+			// console.log(arr);
+		}
+	}
+	
+	console.log(testArray);
+	bubbleSort(testArray);
+	console.log(testArray);
+
+</script>
+<body>
+
+</body>
+</html>
+

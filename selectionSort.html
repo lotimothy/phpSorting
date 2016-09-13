@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selection Sort</title>
+</head>
+<script type="text/javascript">
+	
+	var testArray = [5, 9, 2, 7, 3, 1, 4, 6, 8]
+
+	function findMinPlace(arr) {
+		min = arr[0];
+		place = 0;
+		for (var i=1; i<arr.length; i++) {
+			if (arr[i] < min) {
+				min = arr[i];
+				place = i;
+			}
+		}
+		return [min, place];
+	}
+	
+	function selectionSort(arr) {
+		for (var i=0; i<arr.length-1; i++) {
+			console.log("try number " + i + " with array " + arr);
+			var min = arr[i];
+			console.log('first item of sub-array: ' + min);
+			for (var k=i; k<arr.length-1; k++) {
+				if (arr[k+1]<min) {
+					min = arr[k+1];
+				}
+			}
+			console.log('discovered min value: ' + min);
+			var temp = arr[i];
+			arr[i] = min;
+			for (var m=i+1; m<arr.length; m++) {
+				if (arr[m] == min) {
+					arr[m] = temp;
+				}
+			}
+		}
+		console.log(arr);
+	}
+
+	findMinPlace(testArray);
+	selectionSort(testArray);
+
+</script>
+<body>
+
+</body>
+</html>
+
