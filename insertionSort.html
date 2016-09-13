@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Insertion Sort</title>
+</head>
+<script type="text/javascript">
+
+	function orderTwoThings(x, y) {
+		if (y<x) {
+			var temp = y;
+			y = x;
+			x = temp;
+		}
+		return [x, y];
+	}
+
+	var testArray = []
+	for (var ran=0; ran<20; ran++) {
+		testArray[ran] = Math.floor(Math.random()*100);
+	}
+
+function insertionSort(arr) {
+	for (var run=1; run<arr.length; run++) {
+		for (var sprint=run; sprint>0; sprint--) {
+			var sorted = orderTwoThings(arr[sprint], arr[sprint-1]);
+			arr[sprint-1] = sorted[0];
+			arr[sprint] = sorted[1];
+		}
+		// console.log(arr);
+	}
+	// console.log(arr);
+}
+
+console.log('starting array = ' + testArray);
+insertionSort(testArray);
+console.log('finished array = ' + testArray);
+
+</script>
+<body>
+
+</body>
+</html>
+
