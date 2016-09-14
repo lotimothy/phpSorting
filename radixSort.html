@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Radix Sort</title>
+</head>
+<script type="text/javascript">
+
+	var testArray = []; // create a random test array to work on
+	for (var ran=0; ran<15; ran++) {
+		testArray[ran] = Math.floor(Math.random()*1000);
+	}
+
+	function radixSort(arr) { // function to work on an "arr" and particular "digit" place to check
+		console.log('starting array: ' + arr);
+		var max = arr[0]; // how many times do we need to run it?
+		for (var l = 1; l < arr.length; l++) {
+			if (arr[l] > max) {
+				max = arr[l];
+			}
+		}
+		var timesRun = (max.toString().length);
+		for (var m = 1; m <= timesRun; m++) {
+			var numsArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // counter array
+			var newArr = [];
+			for (var i = 0; i < arr.length; i++) { // take out that "digit" place and put it into the counter array
+				var place = 0;
+				place = (Math.floor(arr[i] / (Math.pow(10, m)))) % 10;
+				numsArr[place] += 1;
+			}
+			for (var j = 1; j < numsArr.length; j++) { // adding items in counter array
+				numsArr[j] += numsArr[j - 1];
+			}
+			for (var k = arr.length - 1; k >= 0; k--) { // go through array backwards and using counter array put in new place
+				var lastDigit = (Math.floor(arr[k] / (Math.pow(10, m)))) % 10;
+				var position = numsArr[lastDigit] - 1;
+				numsArr[lastDigit] -= 1; // when put correctly, remove from counter array
+				newArr[position] = arr[k];
+			}
+			arr = newArr; // run recursively
+		}
+		console.log('sorted array: ' + arr);
+	}
+
+	radixSort(testArray);
+
+</script>
+<body>
+
+</body>
+</html>
+
